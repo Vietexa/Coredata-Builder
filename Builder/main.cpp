@@ -259,6 +259,31 @@ int main() {
 
 		if (dataVersion >= 14) memPos += sizeof(int);
 
+	        if (dataVersion >= 15)
+	{
+		memPos += 25;
+		memPos += 2;
+		memPos += *std::bit_cast<short*>(data + memPos);
+
+	}
+
+	        if (dataVersion >= 16)
+
+
+	{
+
+		memPos += 2;
+		memPos += *std::bit_cast<short*>(data + memPos);
+
+	}
+
+
+	
+	        if (dataVersion >= 17)  memPos += 4;
+	
+                if (dataVersion >= 18) memPos += 4;
+	
+
 		if (itemInfo.id < itemId) continue;
 
 		std::string actionType = itemInfo.actionType > categoryNames.size() ? "" : categoryNames[static_cast<std::size_t>(itemInfo.actionType)];
